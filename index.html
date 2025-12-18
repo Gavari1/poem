@@ -7,278 +7,123 @@
 
   <style>
     :root{
-      --ivory: #f6f1e7;
-      --paper: #ffffff;
-      --ink: #1f2937;
-      --muted: #6b7280;
-      --line: rgba(31,41,55,.12);
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
-
-      /* “book page” vibe */
-      --serif: ui-serif, "Georgia", "Garamond", "Times New Roman", serif;
+      --ivory:#f6f1e7;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:rgba(31,41,55,.12);
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --serif: ui-serif, Georgia, Garamond, "Times New Roman", serif;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--ivory);
-      color: var(--ink);
-      font-family: var(--sans);
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans)}
 
     header{
-      padding: 24px 18px 10px;
-      max-width: 1100px;
-      margin: 0 auto;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 16px;
+      max-width:1100px;margin:0 auto;padding:24px 18px 10px;
+      display:flex;justify-content:space-between;gap:16px;align-items:flex-end;
     }
-
-    .brand h1{
-      margin:0;
-      font-weight: 700;
-      letter-spacing: .2px;
-      font-size: 22px;
-    }
-    .brand p{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    .brand h1{margin:0;font-size:22px;font-weight:700}
+    .brand p{margin:6px 0 0;color:var(--muted);font-size:13px}
 
     .wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 18px 40px;
-      display:grid;
-      grid-template-columns: 320px 1fr;
-      gap: 18px;
+      max-width:1100px;margin:0 auto;padding:14px 18px 40px;
+      display:grid;grid-template-columns:320px 1fr;gap:18px;
     }
-
-    @media (max-width: 900px){
-      .wrap{ grid-template-columns: 1fr; }
-    }
+    @media (max-width:900px){.wrap{grid-template-columns:1fr}}
 
     .card{
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;box-shadow:var(--shadow);overflow:hidden;
     }
-
-    .card .hd{
-      padding: 14px 14px 10px;
-      border-bottom: 1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
+    .hd{
+      padding:14px 14px 10px;border-bottom:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
     }
-
-    .card .hd h2{
-      margin:0;
-      font-size: 14px;
-      letter-spacing: .2px;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 700;
+    .hd h2{
+      margin:0;font-size:14px;text-transform:uppercase;color:var(--muted);
+      letter-spacing:.2px;font-weight:700;
     }
+    .bd{padding:14px}
 
-    .card .bd{ padding: 14px; }
-
-    /* Left column */
-    .search{
-      width:100%;
-      padding: 10px 12px;
+    .pill{
+      font-size:12px;color:var(--muted);
       border:1px solid var(--line);
-      border-radius: 10px;
-      font-size: 14px;
-      outline:none;
-      background: #fff;
-    }
-    .poemList{
-      margin-top: 12px;
-      display:flex;
-      flex-direction:column;
-      gap: 8px;
-      max-height: 420px;
-      overflow:auto;
-      padding-right: 4px;
-    }
-    .poemLink{
-      width:100%;
-      text-align:left;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border:1px solid var(--line);
-      background:#fff;
-      cursor:pointer;
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
-      align-items:center;
-      transition: transform .06s ease, border-color .12s ease;
-    }
-    .poemLink:hover{ transform: translateY(-1px); border-color: rgba(31,41,55,.25); }
-    .poemLink.active{ border-color: rgba(31,41,55,.55); }
-    .poemTitle{
-      font-family: var(--serif);
-      font-size: 16px;
-      color: var(--ink);
-    }
-    .poemMeta{
-      font-size: 12px;
-      color: var(--muted);
+      padding:6px 10px;border-radius:999px;background:#fff;
       white-space:nowrap;
     }
 
-    .btnRow{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+    /* Left */
+    .search{
+      width:100%;padding:10px 12px;border:1px solid var(--line);
+      border-radius:10px;font-size:14px;outline:none;background:#fff;
     }
+    .poemList{
+      margin-top:12px;display:flex;flex-direction:column;gap:8px;
+      max-height:420px;overflow:auto;padding-right:4px;
+    }
+    .poemLink{
+      display:flex;justify-content:space-between;gap:10px;align-items:center;
+      text-decoration:none;
+      padding:10px 12px;border-radius:10px;border:1px solid var(--line);
+      background:#fff;transition:transform .06s ease,border-color .12s ease;
+      color:inherit;
+    }
+    .poemLink:hover{transform:translateY(-1px);border-color:rgba(31,41,55,.25)}
+    .poemLink.active{border-color:rgba(31,41,55,.55)}
+    .poemTitle{font-family:var(--serif);font-size:16px}
+    .poemMeta{font-size:12px;color:var(--muted)}
 
-    button, .btn{
-      border:1px solid var(--line);
-      background:#fff;
-      color: var(--ink);
-      border-radius: 10px;
-      padding: 10px 12px;
-      cursor:pointer;
-      font-size: 14px;
-      transition: transform .06s ease, border-color .12s ease, background .12s ease;
-    }
-    button:hover, .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(31,41,55,.25);
-      background: #fbfbfb;
-    }
-    button.danger{ border-color: rgba(239,68,68,.35); }
-    button.danger:hover{ border-color: rgba(239,68,68,.6); }
+    .about{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.6}
 
-    /* Right column reader */
-    .readerTitle{
-      font-family: var(--serif);
-      font-size: 28px;
-      margin: 0;
-      letter-spacing: .2px;
+    /* Right feed */
+    .feed{
+      max-height: calc(100vh - 150px);
+      overflow:auto;
+      padding: 14px;
     }
-    .readerSub{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
+    @media (max-width:900px){
+      .feed{max-height:none;overflow:visible;padding:14px}
     }
-    .poemText{
-      margin-top: 18px;
-      font-family: var(--serif);
-      font-size: 19px;
-      line-height: 1.75;
-      white-space: pre-wrap;
-    }
-
-    .about{
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Modal */
-    .overlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.5);
-      display:none;
-      align-items:center;
-      justify-content:center;
+    .poemCard{
+      background:#fff;border:1px solid var(--line);border-radius:14px;
+      box-shadow: var(--shadow);
       padding: 18px;
-      z-index: 50;
+      margin-bottom: 14px;
     }
-    .overlay.show{ display:flex; }
-    .modal{
-      width: min(860px, 100%);
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      box-shadow: 0 30px 80px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .modal .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap: 10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
-    }
-    .modal .top h3{
+    .poemCard:last-child{margin-bottom:0}
+    .poemCard h3{
       margin:0;
-      font-size: 14px;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: .2px;
+      font-family:var(--serif);
+      font-size:28px;
+      letter-spacing:.2px;
     }
-    .modal .inner{ padding: 14px; }
-    .field label{
-      display:block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: .2px;
-      font-weight: 700;
+    .poemDate{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .poemBody{
+      margin-top:16px;
+      font-family:var(--serif);
+      font-size:19px;
+      line-height:1.75;
+      white-space:pre-wrap;
     }
-    .field input, .field textarea{
-      width:100%;
-      padding: 10px 12px;
-      border:1px solid var(--line);
-      border-radius: 10px;
-      font-size: 14px;
-      outline:none;
-      font-family: var(--sans);
-      background: #fff;
-    }
-    .field textarea{
-      min-height: 220px;
-      resize: vertical;
-      font-family: var(--serif);
-      font-size: 16px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-    .modal .actions{
-      display:flex;
-      justify-content:space-between;
-      gap: 10px;
-      align-items:center;
-      padding: 12px 14px;
-      border-top: 1px solid var(--line);
-    }
-    .hint{
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .hidden{display:none !important;}
 
-    input[type="file"]{ display:none; }
+    /* highlight when jumped to */
+    .flash{
+      outline: 2px solid rgba(31,41,55,.35);
+      outline-offset: 3px;
+    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="brand">
-      <h1>Poems</h1>
-      <p>Quiet, clean, and easy to browse.</p>
+      <h1 id="siteTitle">Poems</h1>
+      <p id="tagline">A small room for words.</p>
     </div>
-    <div style="display:flex; gap:10px; align-items:center;">
-      <button id="newBtn">Add poem</button>
-      <label class="btn" for="fileInput">Import .txt</label>
-      <input id="fileInput" type="file" accept=".txt" multiple />
-    </div>
+    <div class="pill" id="statusPill">Loading…</div>
   </header>
 
   <main class="wrap">
@@ -286,22 +131,15 @@
     <section class="card">
       <div class="hd">
         <h2>Library</h2>
+        <span class="pill" id="countPill"></span>
       </div>
       <div class="bd">
         <input id="search" class="search" placeholder="Search titles..." />
         <div id="list" class="poemList"></div>
 
-        <div class="btnRow">
-          <button id="exportBtn">Export JSON</button>
-          <button id="clearBtn" class="danger">Clear library</button>
-        </div>
-
         <div class="about">
-          <strong>About me</strong><br/>
-          <span id="aboutText">
-            Write a couple lines here about who you are and what this page is.
-            (You can edit this directly in the HTML.)
-          </span>
+          <strong id="aboutTitle">About</strong><br/>
+          <span id="aboutText"></span>
         </div>
       </div>
     </section>
@@ -309,314 +147,160 @@
     <!-- RIGHT -->
     <section class="card">
       <div class="hd">
-        <h2>Reader</h2>
-        <div style="display:flex; gap:8px;">
-          <button id="editBtn" disabled>Edit</button>
-          <button id="deleteBtn" class="danger" disabled>Delete</button>
-        </div>
+        <h2>Feed</h2>
+        <span class="pill">Read-only</span>
       </div>
-      <div class="bd">
-        <h1 id="readerTitle" class="readerTitle">Select a poem</h1>
-        <p id="readerSub" class="readerSub">Your poems will appear on the left. Click one to read it.</p>
-        <div id="readerText" class="poemText" style="display:none;"></div>
-      </div>
+      <div id="feed" class="feed"></div>
     </section>
   </main>
 
-  <!-- MODAL -->
-  <div id="overlay" class="overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="Add or edit poem">
-      <div class="top">
-        <h3 id="modalTitle">Add poem</h3>
-        <button id="closeModal">Close</button>
-      </div>
-
-      <div class="inner">
-        <div class="field" style="margin-bottom:12px;">
-          <label for="titleInput">Title</label>
-          <input id="titleInput" placeholder="e.g., Time" maxlength="80" />
-        </div>
-
-        <div class="field">
-          <label for="bodyInput">Poem</label>
-          <textarea id="bodyInput" placeholder="Paste your poem here..."></textarea>
-        </div>
-      </div>
-
-      <div class="actions">
-        <div class="hint">Tip: line breaks are preserved exactly.</div>
-        <div style="display:flex; gap:8px;">
-          <button id="saveBtn">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // --------- Data ---------
-    const STORAGE_KEY = "poem_library_v1";
-    /** @type {{id:string,title:string,body:string,createdAt:number,updatedAt:number}[]} */
-    let poems = loadPoems();
+    let LIB = { siteTitle:"Poems", tagline:"", aboutTitle:"About", aboutText:"", poems:[] };
+    const statusPill = document.getElementById("statusPill");
+    const countPill  = document.getElementById("countPill");
+
+    const siteTitleEl = document.getElementById("siteTitle");
+    const taglineEl   = document.getElementById("tagline");
+    const aboutTitleEl= document.getElementById("aboutTitle");
+    const aboutTextEl = document.getElementById("aboutText");
+
+    const searchEl = document.getElementById("search");
+    const listEl   = document.getElementById("list");
+    const feedEl   = document.getElementById("feed");
 
     let selectedId = null;
-    let editingId = null;
 
-    // Seed with one example if empty
-    if (poems.length === 0) {
-      poems = [{
-        id: crypto.randomUUID(),
-        title: "Sample",
-        body: "Today is not the day",
-        createdAt: Date.now(),
-        updatedAt: Date.now()
-      }];
-      savePoems();
+    async function loadLibrary(){
+      try{
+        const res = await fetch("./poems.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("Could not load poems.json");
+        LIB = await res.json();
+        LIB.poems = Array.isArray(LIB.poems) ? LIB.poems : [];
+
+        // Sort newest first by date
+        LIB.poems.sort((a,b) => (b.date || "").localeCompare(a.date || ""));
+
+        siteTitleEl.textContent = LIB.siteTitle || "Poems";
+        taglineEl.textContent   = LIB.tagline || "";
+        aboutTitleEl.textContent= LIB.aboutTitle || "About";
+        aboutTextEl.textContent = LIB.aboutText || "";
+
+        countPill.textContent = `${LIB.poems.length} poems`;
+        statusPill.textContent = "Loaded";
+
+        renderAll();
+        openFromHash(); // if someone visits /#some-id
+      }catch(e){
+        statusPill.textContent = "Error";
+        feedEl.innerHTML = `<div style="padding:14px;color:#6b7280">
+          Couldn’t load <code>poems.json</code>. Make sure it’s in the repo root.
+        </div>`;
+        console.error(e);
+      }
     }
 
-    // --------- Elements ---------
-    const listEl = document.getElementById("list");
-    const searchEl = document.getElementById("search");
+    function renderAll(){
+      renderList();
+      renderFeed();
+    }
 
-    const readerTitleEl = document.getElementById("readerTitle");
-    const readerSubEl = document.getElementById("readerSub");
-    const readerTextEl = document.getElementById("readerText");
-
-    const newBtn = document.getElementById("newBtn");
-    const editBtn = document.getElementById("editBtn");
-    const deleteBtn = document.getElementById("deleteBtn");
-    const exportBtn = document.getElementById("exportBtn");
-    const clearBtn = document.getElementById("clearBtn");
-
-    const fileInput = document.getElementById("fileInput");
-
-    // Modal
-    const overlay = document.getElementById("overlay");
-    const closeModalBtn = document.getElementById("closeModal");
-    const modalTitleEl = document.getElementById("modalTitle");
-    const titleInput = document.getElementById("titleInput");
-    const bodyInput = document.getElementById("bodyInput");
-    const saveBtn = document.getElementById("saveBtn");
-
-    // --------- Render ---------
-    function renderList() {
+    function renderList(){
       const q = (searchEl.value || "").trim().toLowerCase();
-      const filtered = poems
-        .slice()
-        .sort((a,b) => b.updatedAt - a.updatedAt)
-        .filter(p => p.title.toLowerCase().includes(q));
+      const poems = LIB.poems.filter(p => (p.title || "").toLowerCase().includes(q));
 
       listEl.innerHTML = "";
-
-      for (const p of filtered) {
-        const btn = document.createElement("button");
-        btn.className = "poemLink" + (p.id === selectedId ? " active" : "");
-        btn.type = "button";
+      for(const p of poems){
+        const a = document.createElement("a");
+        a.href = `#${encodeURIComponent(p.id)}`;
+        a.className = "poemLink" + (p.id === selectedId ? " active" : "");
 
         const left = document.createElement("div");
         left.className = "poemTitle";
-        left.textContent = p.title;
+        left.textContent = p.title || "(Untitled)";
 
         const right = document.createElement("div");
         right.className = "poemMeta";
-        right.textContent = timeAgo(p.updatedAt);
+        right.textContent = formatDate(p.date);
 
-        btn.append(left, right);
-
-        btn.addEventListener("click", () => selectPoem(p.id));
-        listEl.appendChild(btn);
-      }
-    }
-
-    function selectPoem(id) {
-      selectedId = id;
-      const p = poems.find(x => x.id === id);
-      if (!p) return;
-
-      readerTitleEl.textContent = p.title;
-      readerSubEl.textContent = "Updated " + new Date(p.updatedAt).toLocaleString();
-      readerTextEl.style.display = "block";
-      readerTextEl.textContent = p.body;
-
-      editBtn.disabled = false;
-      deleteBtn.disabled = false;
-
-      renderList();
-    }
-
-    // --------- Modal ---------
-    function openModal(mode, poem) {
-      overlay.classList.add("show");
-      overlay.setAttribute("aria-hidden", "false");
-
-      if (mode === "new") {
-        modalTitleEl.textContent = "Add poem";
-        editingId = null;
-        titleInput.value = "";
-        bodyInput.value = "";
-      } else {
-        modalTitleEl.textContent = "Edit poem";
-        editingId = poem.id;
-        titleInput.value = poem.title;
-        bodyInput.value = poem.body;
-      }
-
-      setTimeout(() => titleInput.focus(), 50);
-    }
-
-    function closeModal() {
-      overlay.classList.remove("show");
-      overlay.setAttribute("aria-hidden", "true");
-      editingId = null;
-    }
-
-    // --------- Actions ---------
-    newBtn.addEventListener("click", () => openModal("new"));
-
-    editBtn.addEventListener("click", () => {
-      const p = poems.find(x => x.id === selectedId);
-      if (!p) return;
-      openModal("edit", p);
-    });
-
-    deleteBtn.addEventListener("click", () => {
-      const p = poems.find(x => x.id === selectedId);
-      if (!p) return;
-      if (!confirm(`Delete "${p.title}"?`)) return;
-
-      poems = poems.filter(x => x.id !== selectedId);
-      selectedId = null;
-      savePoems();
-      renderList();
-      clearReader();
-    });
-
-    exportBtn.addEventListener("click", () => {
-      const blob = new Blob([JSON.stringify(poems, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "poems.json";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
-
-    clearBtn.addEventListener("click", () => {
-      if (!confirm("Clear your whole library? This only affects this browser/device.")) return;
-      poems = [];
-      selectedId = null;
-      savePoems();
-      renderList();
-      clearReader();
-    });
-
-    saveBtn.addEventListener("click", () => {
-      const title = titleInput.value.trim();
-      const body = bodyInput.value.replace(/\r\n/g, "\n").trimEnd();
-
-      if (!title) return alert("Give it a title.");
-      if (!body) return alert("Paste the poem text.");
-
-      if (editingId) {
-        const p = poems.find(x => x.id === editingId);
-        if (!p) return;
-        p.title = title;
-        p.body = body;
-        p.updatedAt = Date.now();
-      } else {
-        poems.push({
-          id: crypto.randomUUID(),
-          title,
-          body,
-          createdAt: Date.now(),
-          updatedAt: Date.now()
+        a.append(left, right);
+        a.addEventListener("click", (e) => {
+          // Let hash update happen, then scroll/highlight
+          selectedId = p.id;
+          setTimeout(() => {
+            scrollToPoem(p.id);
+            renderList();
+          }, 0);
         });
-      }
 
-      savePoems();
-      closeModal();
+        listEl.appendChild(a);
+      }
+    }
+
+    function renderFeed(){
+      const q = (searchEl.value || "").trim().toLowerCase();
+      feedEl.innerHTML = "";
+
+      for(const p of LIB.poems){
+        const match = !q || (p.title || "").toLowerCase().includes(q);
+
+        const card = document.createElement("article");
+        card.className = "poemCard" + (match ? "" : " hidden");
+        card.id = `poem-${p.id}`;
+
+        const h = document.createElement("h3");
+        h.textContent = p.title || "(Untitled)";
+
+        const d = document.createElement("div");
+        d.className = "poemDate";
+        d.textContent = p.date ? `Posted ${formatDate(p.date)}` : "";
+
+        const body = document.createElement("div");
+        body.className = "poemBody";
+        body.textContent = p.body || "";
+
+        card.append(h, d, body);
+        feedEl.appendChild(card);
+      }
+    }
+
+    function scrollToPoem(id){
+      const el = document.getElementById(`poem-${id}`);
+      if(!el) return;
+      el.classList.remove("flash");
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      // little highlight pulse
+      setTimeout(() => {
+        el.classList.add("flash");
+        setTimeout(() => el.classList.remove("flash"), 900);
+      }, 250);
+    }
+
+    function openFromHash(){
+      const hash = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+      if(!hash) return;
+      const exists = LIB.poems.some(p => p.id === hash);
+      if(!exists) return;
+      selectedId = hash;
+      // if search is filtering it out, clear search so it appears
+      if(searchEl.value) {
+        searchEl.value = "";
+        renderAll();
+      }
+      scrollToPoem(hash);
       renderList();
-
-      // Auto select the updated/new poem
-      const match = poems
-        .slice()
-        .sort((a,b) => b.updatedAt - a.updatedAt)[0];
-      if (match) selectPoem(match.id);
-    });
-
-    closeModalBtn.addEventListener("click", closeModal);
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && overlay.classList.contains("show")) closeModal();
-    });
-
-    // Search
-    searchEl.addEventListener("input", renderList);
-
-    // Import .txt
-    fileInput.addEventListener("change", async () => {
-      const files = Array.from(fileInput.files || []);
-      for (const f of files) {
-        const text = await f.text();
-        const title = (f.name || "Untitled").replace(/\.[^.]+$/, "");
-        poems.push({
-          id: crypto.randomUUID(),
-          title,
-          body: text.replace(/\r\n/g, "\n").trimEnd(),
-          createdAt: Date.now(),
-          updatedAt: Date.now()
-        });
-      }
-      savePoems();
-      renderList();
-      fileInput.value = "";
-    });
-
-    function clearReader(){
-      readerTitleEl.textContent = "Select a poem";
-      readerSubEl.textContent = "Your poems will appear on the left. Click one to read it.";
-      readerTextEl.style.display = "none";
-      readerTextEl.textContent = "";
-      editBtn.disabled = true;
-      deleteBtn.disabled = true;
     }
 
-    // --------- Storage ---------
-    function loadPoems(){
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        if (!raw) return [];
-        const data = JSON.parse(raw);
-        return Array.isArray(data) ? data : [];
-      } catch {
-        return [];
-      }
+    function formatDate(s){
+      if(!s) return "";
+      const d = new Date(s + "T00:00:00");
+      if(isNaN(d.getTime())) return s;
+      return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
     }
 
-    function savePoems(){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(poems));
-    }
+    searchEl.addEventListener("input", () => renderAll());
+    window.addEventListener("hashchange", openFromHash);
 
-    // --------- Helpers ---------
-    function timeAgo(ts){
-      const s = Math.floor((Date.now() - ts) / 1000);
-      if (s < 60) return "just now";
-      const m = Math.floor(s/60);
-      if (m < 60) return `${m}m ago`;
-      const h = Math.floor(m/60);
-      if (h < 24) return `${h}h ago`;
-      const d = Math.floor(h/24);
-      return `${d}d ago`;
-    }
-
-    // Init
-    renderList();
-    // Auto select most recent
-    const mostRecent = poems.slice().sort((a,b) => b.updatedAt - a.updatedAt)[0];
-    if (mostRecent) selectPoem(mostRecent.id);
+    loadLibrary();
   </script>
 </body>
 </html>
