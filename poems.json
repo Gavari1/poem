@@ -1,14 +1,14 @@
 {
   "siteTitle": "Poems",
-  "tagline": "A small room for words",
+  "tagline": "A small room for words.",
   "aboutTitle": "About",
-  "aboutText": "Short bio here", 
+  "aboutText": "Short bio here. Keep it simple.",
   "poems": [
     {
       "id": "another-day",
-      "title": "Another Day", 
+      "title": "Another Day",
       "date": "2025-12-18",
-      "body": "poem goes here", 
+      "body": "I open my eyes\nanother day, but it’s the same.\n\nThe movements a blueprint\nof the day before.\n\nA bus comes.\nThe garage closes.\nI drive away."
     }
   ]
 }
