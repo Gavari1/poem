@@ -1,0 +1,14 @@
+{
+  "siteTitle": "Poems",
+  "tagline": "A small room for words",
+  "aboutTitle": "About",
+  "aboutText": "Short bio here", 
+  "poems": [
+    {
+      "id": "another-day",
+      "title": "Another Day", 
+      "date": "2025-12-18",
+      "body": "poem goes here", 
+    }
+  ]
+}
