@@ -86,11 +86,18 @@
     @media (max-width:900px){
       .feed{max-height:none;overflow:visible;padding:14px}
     }
+
+    /* === UPDATED: Center poem like the Carver page vibe === */
     .poemCard{
       background:#fff;border:1px solid var(--line);border-radius:14px;
       box-shadow: var(--shadow);
       padding: 18px;
       margin-bottom: 14px;
+
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
     }
     .poemCard:last-child{margin-bottom:0}
     .poemCard h3{
@@ -98,15 +105,26 @@
       font-family:var(--serif);
       font-size:28px;
       letter-spacing:.2px;
+      text-align:center;
     }
-    .poemDate{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .poemDate{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
     .poemBody{
       margin-top:16px;
       font-family:var(--serif);
       font-size:19px;
       line-height:1.75;
       white-space:pre-wrap;
+
+      text-align:center;
+      max-width: 620px;
+      width: 100%;
     }
+
     .hidden{display:none !important;}
 
     /* highlight when jumped to */
