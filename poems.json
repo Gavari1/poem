@@ -4,13 +4,9 @@
   "aboutTitle": "About",
   "aboutText": "Short bio here. Keep it simple.",
   "poems": [
-    {
-      "id": "another-day",
-      "title": "Another Day",
-      "date": "2025-12-18",
-      "body": "I open my eyes\nanother day, but it’s the same.\n\nThe movements a blueprint\nof the day before.\n\nI smile.\nI'm alive.\n\nI sit 
-      on the edge of the bed\nand wait\nfor the part where it feels different.\n\nA bus comes.
-      \nThe garage closes.\nI drive away."
-    }
-  ]
+       {
+  "id": "another-day",
+  "title": "Another Day",
+  "date": "2025-12-18",
+  "body": "I open my eyes\nanother day, but it’s the same.\n\nThe movements a blueprint\nof the day before.\n\nI smile, I’m alive.\n\nI sit on the edge of the bed,\nand wait\nfor the part where it feels different.\n\nNothing happens.\n\nI step outside, cold air\nwinter sting.\n\nBare bark illuminated\nby the morning sun over the horizon.\n\nThe neighborhood children wait on the corner.\n\nA bus comes.\n\nThe garage closes.\n\nI drive away."
 }
